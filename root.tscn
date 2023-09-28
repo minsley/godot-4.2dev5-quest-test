@@ -1,20 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://lmuv2qmnnkbq"]
+[gd_scene load_steps=4 format=3 uid="uid://lmuv2qmnnkbq"]
 
 [ext_resource type="Script" path="res://InitXR.gd" id="1_r641h"]
+[ext_resource type="Environment" uid="uid://dde72v1fchffo" path="res://env.tres" id="2_vwxwt"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hbt3u"]
-sky_top_color = Color(0.737255, 0.0705882, 0.67451, 1)
-sky_horizon_color = Color(0.854902, 0.490196, 0.901961, 1)
-ground_bottom_color = Color(0.0980392, 0.109804, 0.447059, 1)
-ground_horizon_color = Color(0.733333, 0.552941, 0.964706, 1)
-
-[sub_resource type="Sky" id="Sky_4xbg1"]
-sky_material = SubResource("ProceduralSkyMaterial_hbt3u")
-
-[sub_resource type="Environment" id="Environment_gfcrn"]
-background_mode = 2
-sky = SubResource("Sky_4xbg1")
-ambient_light_color = Color(0.815686, 0, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bn7f"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.2)
+emission_enabled = true
+emission = Color(0.235294, 0.0666667, 0.67451, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 0.2
 
 [node name="root" type="Node3D"]
 script = ExtResource("1_r641h")
@@ -52,21 +47,32 @@ height = 0.1
 
 [node name="CSGBox3D_floor" type="CSGBox3D" parent="env"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.05, 2.08165e-12)
-size = Vector3(2, 0.1, 2)
+size = Vector3(10, 0.1, 10)
+material = SubResource("StandardMaterial3D_2bn7f")
 
 [node name="Label3D_Zn" type="Label3D" parent="env"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.3, -4)
 pixel_size = 0.01
 text = "-Z"
 
 [node name="Label3D_Zp" type="Label3D" parent="env"]
-transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, 1, 2)
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, 0.3, 4)
 pixel_size = 0.01
 text = "+Z"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gfcrn")
+[node name="Label3D_Xn" type="Label3D" parent="env"]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, -4, 0.3, 2.08165e-12)
+pixel_size = 0.01
+text = "-X"
+
+[node name="Label3D_Xp" type="Label3D" parent="env"]
+transform = Transform3D(-4.37114e-08, -3.48787e-16, -1, 3.48787e-16, 1, -3.48787e-16, 1, -3.48787e-16, -4.37114e-08, 4, 0.3, 2.08165e-12)
+pixel_size = 0.01
+text = "+X"
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.568533, 0.369342, 0.73509, -0.82266, 0.255249, 0.508014, 1.01387e-16, -0.893552, 0.44896, 0, 1.71532, 0)
 light_color = Color(1, 0.0392157, 0.6, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_vwxwt")
