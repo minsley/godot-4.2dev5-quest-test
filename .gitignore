@@ -14,9 +14,12 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
-#Android build ignore
+# Android build ignore
 android/build/*
 !android/build/AndroidManifest.xml
+
+# Godot OpenXr Plugin (might be breakin stuff now)
+/addons/godotopenxr
 
 # macos
 .DS_Store
