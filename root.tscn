@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://lmuv2qmnnkbq"]
+[gd_scene load_steps=5 format=3 uid="uid://lmuv2qmnnkbq"]
 
 [ext_resource type="Script" path="res://InitXR.gd" id="1_r641h"]
-[ext_resource type="Script" path="res://SineBob.gd" id="1_xw4o4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hbt3u"]
 sky_top_color = Color(0.737255, 0.0705882, 0.67451, 1)
@@ -59,13 +58,11 @@ size = Vector3(2, 0.1, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, -2)
 pixel_size = 0.01
 text = "-Z"
-script = ExtResource("1_xw4o4")
 
 [node name="Label3D_Zp" type="Label3D" parent="env"]
 transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 2.08165e-12, 1, 2)
 pixel_size = 0.01
 text = "+Z"
-script = ExtResource("1_xw4o4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gfcrn")
